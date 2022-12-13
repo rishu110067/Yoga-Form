@@ -23,10 +23,14 @@ const Registration = () => {
           values
         );
         action.resetForm();
-
+        
+        fetch('/api')
+          .then((res) => {
+            console.log(res)
+          })
       },
     });
-
+  
   console.log(
     "🚀 ~ file: Registration.jsx ~ line 30 ~ Registration ~ errors",
     errors
