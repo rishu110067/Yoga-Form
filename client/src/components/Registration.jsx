@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useFormik } from "formik";
 import { userSchema } from "../schemas/userSchema";
 
@@ -11,30 +12,28 @@ const initialValues = {
   batch: "",
 };
 
-
 const Registration = () => {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
       validationSchema: userSchema,
-      onSubmit: (values, action) => {
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 22 ~ Registration ~ values",
-          values
-        );
+      onSubmit: async (values, action) => {
+        
+        // console.log("🚀 ~ file: Registration.jsx ~ line 22 ~ Registration ~ values", values);
         action.resetForm();
         
-        fetch('http://localhost:3001/api')
-          .then((res) => {
-            console.log(res.body)
-          })
+        try {
+          const url = "http://localhost:3001/save"
+          const resp = await axios.post(url, values);
+          console.log(resp.data);
+        }
+        catch (error) {
+          console.log(error.response);
+        }
       },
     });
   
-  console.log(
-    "🚀 ~ file: Registration.jsx ~ line 30 ~ Registration ~ errors",
-    errors
-  );
+  // console.log("🚀 ~ file: Registration.jsx ~ line 30 ~ Registration ~ errors", errors);
 
   return (
     <div className="container">
@@ -170,10 +169,10 @@ const Registration = () => {
                   onBlur={handleBlur}
                   >
                   <option value="">Select Batch</option>
-                  <option value="1">6-7AM</option>
-                  <option value="2">7-8AM</option>
-                  <option value="3">8-9AM</option>
-                  <option value="4">5-6PM</option>
+                  <option value="6-7AM">6-7AM</option>
+                  <option value="7-8AM">7-8AM</option>
+                  <option value="8-9AM">8-9AM</option>
+                  <option value="5-6PM">5-6PM</option>
                 </select>
                 {errors.batch && touched.batch ? (
                   <p className="form-error">{errors.batch}</p>
@@ -199,7 +198,5 @@ const Registration = () => {
     </div>
   );
 };
-
-
 
 export default Registration;

@@ -6,5 +6,5 @@ export const userSchema = Yup.object({
   phone: Yup.string().min(10).max(10).required("Please enter your phone number"),
   age: Yup.number().min(18).max(65).required("Please enter your age"),
   month: Yup.string(),
-  batch: Yup.number().min(1).max(4),
+  batch: Yup.string(),
 });

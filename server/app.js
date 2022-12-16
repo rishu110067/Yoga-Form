@@ -25,6 +25,10 @@ if (process.env.NODE_ENV == 'development') {
     app.use(morgan('dev'))
 }
 
+// Body Parser middleware
+app.use(express.json())
+app.use(express.urlencoded())
+
 // Routes
 app.use('/', require('./routes/index'));
 
