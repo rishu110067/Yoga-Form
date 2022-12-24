@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
 import { useFormik } from "formik";
+import { useNavigate } from 'react-router-dom';
 import { userSchema } from "../schemas/userSchema";
 
 const initialValues = {
@@ -13,20 +13,15 @@ const initialValues = {
 };
 
 const Form = () => {
+  const navigate = useNavigate();
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
       validationSchema: userSchema,
       onSubmit: async (values, action) => {
         action.resetForm();
-        try {
-          const url = "http://localhost:3001/save"
-          const resp = await axios.post(url, values);
-          console.log(resp.data);
-        }
-        catch (error) {
-          console.log(error.response);
-        }
+        navigate('/payment', {state: values});
       },
     });
   
@@ -181,10 +176,7 @@ const Form = () => {
       </div>
 
       <div className="modal-right">
-        <img
-          src="./yoga-class.jpeg"
-          alt=""
-        />
+        <img src="./yoga-class.jpeg" alt="" />
       </div>
     </div>
   );

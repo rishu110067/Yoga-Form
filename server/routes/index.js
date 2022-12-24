@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const Form = require('../models/Form') 
+const payment = require('../lib/payment')
 
 // API endpoints
 router.get('/', (req, res) => {
@@ -21,7 +21,6 @@ router.post('/save', async (req, res) => {
   }
 })
 
-
 // @desc    get all the form details from DB
 // @route   GET /get
 router.get('/get', async (req, res) => {
@@ -31,6 +30,22 @@ router.get('/get', async (req, res) => {
   } catch (err) {
       console.error(err);
       res.send('error');
+  }
+})
+
+// @desc    does the payment
+// @route   GET /payment
+router.get('/payment', async (req, res) => {
+  try {
+    console.log(req.body);
+    if(payment.completePayment(req.body)) {
+      res.send('payment-done');
+    } else {
+      throw "payment-failed";
+    }
+  } catch (err) {
+    console.error(err);
+    res.send('error');
   }
 })
 

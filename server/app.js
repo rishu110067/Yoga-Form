@@ -4,10 +4,6 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const morgan = require('morgan');
 
-const path = require('path');
-const mongoose = require('mongoose');
-
-
 // Load config
 dotenv.config({path: './config/config.env'});
 
