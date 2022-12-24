@@ -8,21 +8,30 @@ router.get('/', (req, res) => {
   res.send('Server is running...');
 });
 
-router.get('/api', (req, res) => {
-  res.send('API Called...');
-});
-
 // @desc    save the form details in DB
 // @route   POST /save
 router.post('/save', async (req, res) => {
-    try {
-        console.log(req.body);
-        await Form.create(req.body);
-        res.send('saved');
-    } catch (err) {
-        console.error(err);
-        res.send('error');
-    }
+  try {
+      console.log(req.body);
+      await Form.create(req.body);
+      res.send('saved');
+  } catch (err) {
+      console.error(err);
+      res.send('error');
+  }
+})
+
+
+// @desc    get all the form details from DB
+// @route   GET /get
+router.get('/get', async (req, res) => {
+  try {
+      const forms = await Form.find().lean();
+      res.send(forms);
+  } catch (err) {
+      console.error(err);
+      res.send('error');
+  }
 })
 
 module.exports = router;

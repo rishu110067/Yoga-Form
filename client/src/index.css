@@ -11,13 +11,10 @@
 
 html{
   font-size: 62.5%;
-
 }
 
 body{
-
   background-color: #EFEDEE; 
-   
 }
 
 h1{
@@ -28,34 +25,58 @@ p{
   font-size: 1.5rem;
 }
 
+/* Navbar Styles */
+
+.navbar {
+  max-width: var(--max-width);
+  margin: auto;
+  position: absolute;
+  left: 38vw;
+  display: flex;
+}
+
+.link {
+  padding: 2rem 4rem 4rem 2rem;
+  color: #64748b;
+  font-size: 2.5rem;
+  font-weight: 1000;
+}
+
+.active {
+  color: #645cff;
+}
+
+/* Show Enrolled Users Data Style */
+
+.data {
+  padding: 75px 150px;
+  margin: 10px;
+  position: absolute;
+  left: 30vw;
+  z-index: -1;
+}
+
+.data-container {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  max-width: 55vw;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
 
 /* Enrol Form Styles */
 
-.container {
-  position: fixed;
-  top: 0;
+.modal-container {
+  margin: auto;
+  top: 80px;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-color: #efedee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.modal {
-  width: 100%;
-  height: 60px;
-  background: rgba(206, 16, 16, 0.5);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: 0.4s;
-}
-.modal-container {
-  display: flex;
-  max-width: 60vw;
+  max-width: 55vw;
   width: 100%;
   border-radius: 10px;
   overflow: hidden;

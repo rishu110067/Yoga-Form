@@ -1,13 +1,20 @@
-import React from 'react'
-import Registration from "./components/Registration";
-import "./styles/style.css"
+import React from "react";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import "./index.css";
+import Navbar from "./components/Navbar";
+import Form from "./components/Form";
+import Enrolled from "./components/Enrolled"
 
 function App() {
   return (
-    <>
-      <Registration />
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Form />} />
+        <Route path='enrolled' element={<Enrolled />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
-export default App
+export default App;
