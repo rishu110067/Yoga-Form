@@ -21,21 +21,23 @@ const Enrolled = () => {
     }, []);
     
     return (
-        <section className='data'>
-            {
-                forms.map((form) => {
-                    return (
-                    <div className="data-container">
-                        Name: {form.name} <br />
-                        Email: {form.email} <br />
-                        Phone: {form.phone} <br />
-                        Age: {form.age} <br />
-                        Month: {form.month} <br />
-                        Batch: {form.batch} <br />
+        <section className='grid'>
+        {
+            forms.map((form) => {
+                return (
+                    <div className="col">
+                        <p>
+                            <b className="bold">Name:</b> <span class="tab" /> {form.name} <br />
+                            <b className="bold">Email:</b> <span class="tab" /> {form.email} <br />
+                            <b className="bold">Phone:</b> <span class="tab" /> {form.phone} <br />
+                            <b className="bold">Age:</b> <span class="tab" /> {form.age} <br />
+                            <b className="bold">Month:</b> <span class="tab" /> {form.month} <br />
+                            <b className="bold">Batch:</b> <span class="tab" /> {form.batch} <br />
+                        </p>
                     </div>
-                    );
-                })
-            }
+                );
+            })
+        }
         </section>
     );
 };

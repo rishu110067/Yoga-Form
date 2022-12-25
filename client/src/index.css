@@ -48,24 +48,56 @@ p{
 
 /* Show Enrolled Users Data Style */
 
-.data {
-  padding: 75px 150px;
-  margin: 10px;
-  position: absolute;
-  left: 30vw;
-  z-index: -1;
+.grid {
+  display: grid;
+  padding: 100px;
+  grid-gap: 16px;
 }
 
-.data-container {
-  padding: 10px;
-  margin: 10px;
-  display: flex;
-  max-width: 55vw;
-  width: 100%;
+.col {
+  background-color: white;
+  margin-bottom: 16px;
+  padding: 16px;
+  font-size: small;
   border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
 }
+
+.tab {
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.bold {
+  color: #8c7569;
+}
+
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1600px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (min-width: 2000px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+
 
 /* Enrol Form Styles */
 
