@@ -14,7 +14,7 @@ router.post('/save', async (req, res) => {
   try {
       console.log(req.body);
       await Form.create(req.body);
-      res.send('saved');
+      res.send(true);
   } catch (err) {
       console.error(err);
       res.send('error');
@@ -34,14 +34,34 @@ router.get('/get', async (req, res) => {
 })
 
 // @desc    does the payment
+// @route   GET /check
+router.get('/check', async (req, res) => {
+  try {
+    console.log(req.query);
+    const forms = await Form.findOne({email: req.query.email, month: req.query.month});
+    console.log(forms);
+    if(forms) {
+      res.send(false);
+    } else {
+      res.send(true);
+    }
+  } catch (err) {
+    console.error(err);
+    res.send('error');
+  }
+})
+
+
+// @desc    does the payment
 // @route   GET /payment
 router.get('/payment', async (req, res) => {
   try {
-    console.log(req.body);
-    if(payment.completePayment(req.body)) {
-      res.send('payment-done');
+    console.log(req.query);
+    if(payment.completePayment(req.query)) {
+      res.send(true);
     } else {
-      throw "payment-failed";
+      console.log('sending false....');
+      res.send(false);
     }
   } catch (err) {
     console.error(err);

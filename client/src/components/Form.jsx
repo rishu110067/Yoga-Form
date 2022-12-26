@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useFormik } from "formik";
 import { useNavigate } from 'react-router-dom';
 import { userSchema } from "../schemas/userSchema";
@@ -20,8 +21,21 @@ const Form = () => {
       initialValues,
       validationSchema: userSchema,
       onSubmit: async (values, action) => {
+        try {
+          const checkURL = "http://localhost:3001/check"
+          const resp = await axios.get(checkURL, {params: values});
+          if(resp.data) {
+            navigate('/payment', {state: values});
+          } 
+          else {
+            navigate('form-error');
+          }
+        }
+        catch (error) {
+            console.log(error.response);
+            navigate('/unknown-error');
+        }
         action.resetForm();
-        navigate('/payment', {state: values});
       },
     });
   

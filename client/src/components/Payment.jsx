@@ -8,23 +8,24 @@ const Payment = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
 
-    const [number, setNumber] = useState(null);
-    const [cvv, setCvv] = useState(null);
-    const [expiry, setExpiry] = useState(null);
-    const [card, setCard] = useState(null);
+    const [number, setNumber] = useState('');
+    const [cvv, setCvv] = useState('');
+    const [expiry, setExpiry] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(!number || !cvv || !expiry) return;
-        setCard({number: number, cvv: cvv, expiry: expiry})
         try {
+            const card = {number: number, cvv: cvv, expiry: expiry};
             const paymentURL = "http://localhost:3001/payment";
-            const resp = await axios.get(paymentURL, card);
-            if(resp.status != 200) navigate('/payment-error')
-
-            const saveURL = "http://localhost:3001/save"
-            await axios.post(saveURL, state);
-            navigate('/payment-done');
+            const resp = await axios.get(paymentURL, {params: {card: card}});
+            if(resp.data) {
+                const saveURL = "http://localhost:3001/save";
+                await axios.post(saveURL, state);
+                navigate('/payment-done'); 
+            } else {
+                navigate('/payment-error');
+            }
         }
         catch (error) {
             console.log(error.response);
