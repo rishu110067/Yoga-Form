@@ -30,4 +30,4 @@ A form to enroll for yoga classes.
 MongoDB has been used. The database has one collection named "forms" which contains the data filled in the form. It has the following attributes - id, name, email, phone, age, month, and batch. 
 
 ### ER Diagram
-![](./images/er-diagram.png)
+![](./images/er-diagram.jpeg)
