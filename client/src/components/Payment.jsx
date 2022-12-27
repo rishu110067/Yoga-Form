@@ -17,10 +17,10 @@ const Payment = () => {
         if(!number || !cvv || !expiry) return;
         try {
             const card = {number: number, cvv: cvv, expiry: expiry};
-            const paymentURL = "http://localhost:3001/payment";
+            const paymentURL = process.env.REACT_APP_PAYMENT_URL;
             const resp = await axios.get(paymentURL, {params: {card: card}});
             if(resp.data) {
-                const saveURL = "http://localhost:3001/save";
+                const saveURL = process.env.REACT_APP_SAVE_URL;
                 await axios.post(saveURL, state);
                 navigate('/payment-done'); 
             } else {

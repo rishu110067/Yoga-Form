@@ -1,18 +1,21 @@
 import React from "react";
 import {useState, useEffect} from 'react';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Enrolled = () => {
     const [forms, setForms] = useState([]);
+    const navigate = useNavigate();
 
     const getForms = async () => {
         try {
-            const url = "http://localhost:3001/get";
-            const resp = await axios.get(url);
+            const getURL = process.env.REACT_APP_GET_URL;
+            const resp = await axios.get(getURL);
             setForms(resp.data);
         }
         catch (error) {
             console.log(error.response);
+            navigate('/unknown-error');
         }
     }
 

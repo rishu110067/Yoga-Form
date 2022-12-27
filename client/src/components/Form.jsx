@@ -22,7 +22,7 @@ const Form = () => {
       validationSchema: userSchema,
       onSubmit: async (values, action) => {
         try {
-          const checkURL = "http://localhost:3001/check"
+          const checkURL = process.env.REACT_APP_CHECK_URL;
           const resp = await axios.get(checkURL, {params: values});
           if(resp.data) {
             navigate('/payment', {state: values});
