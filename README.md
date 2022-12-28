@@ -39,7 +39,7 @@ MongoDB has been used. The database has one collection named "forms" which conta
 
 ### ER Diagram
 
-![er-diagram-image](./images/er-diagram.jpeg)
+![er-diagram-image](./readme-images/er-diagram.png)
 
 
 ## Deployment
