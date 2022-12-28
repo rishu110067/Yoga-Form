@@ -39,8 +39,7 @@ MongoDB has been used. The database has one collection named "forms" which conta
 
 ### ER Diagram
 
-![er-diagram-image](./readme-images/er-diagram.png)
-
+![er-diagram-image](https://drive.google.com/uc?export=view&id=1pD0K8sUaQcAQpRb9xBfVXu1b2fA8w1OO)
 
 ## Deployment
 Deployed on render. 
